@@ -2,6 +2,8 @@
 from os import name
 import pandas as pd
 
+# scrapes tables from Goal article and returns .csv file
+
 
 def scraper():
     source = pd.read_html(
@@ -18,7 +20,7 @@ def scraper():
     df = pd.concat(sourceDfs)
 
     # convert Birthday column to datetime
-    # One value is Jun instead of June so that is fixed
+    # one value is Jun instead of June so that is fixed
     # 1900 is just a dummy year as the original dataset did not have years, only month & day
 
     df['Birthday'] = df['Birthday'].replace({'Jun ': 'June '}, regex=True)
